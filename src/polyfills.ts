@@ -52,6 +52,12 @@
  *
  */
 
+ // @ts-ignore
+window.__importDefault = (mod) => {
+  return mod && mod.__esModule ? mod : { default: mod };
+};
+
+
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */

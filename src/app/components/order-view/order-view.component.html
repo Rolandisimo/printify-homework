@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="header">
+    <h1>Orders</h1>
+    <a routerLink="/import-orders" class="importOrderBtn">Import Orders</a>
+  </div>
+  <table class="orders">
+    <tr class="ordersHeader">
+      <th>#</th>
+      <th>Customer</th>
+      <th>Created</th>
+      <th>Revenue $</th>
+      <th>Sost $</th>
+      <th>Price $</th>
+      <th>Fulfillment</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <td> {{ order.id }} </td>
+      <td> {{ order.customer }} </td>
+      <td> {{ order.created }} </td>
+      <td> {{ order.revenue }} </td>
+      <td> {{ order.sost }} </td>
+      <td> {{ order.price }} </td>
+      <td> {{ order.fulfillment }} </td>
+    </tr>
+  </table>
+</div>
