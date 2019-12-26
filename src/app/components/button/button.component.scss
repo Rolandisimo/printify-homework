@@ -1,0 +1,32 @@
+@import "../../../const.scss";
+
+.container {
+  border: 1px solid $primary;
+  color: $primary;
+  background-color: $secondary;
+  padding: 0.3em 1.5em;
+  border-radius: 2px;
+  position: relative;
+  transition: .1s;
+  display: inline-block;
+
+  &::before {
+    content: "";
+    position: absolute;
+    box-shadow: 0 .1em 0.2em 0.2em lighten($primary, 50%);
+    top: 10%;
+    left: 1%;
+    right: 1%;
+    bottom: 0;
+    transition: .1s;
+    z-index: -1;
+  }
+
+  &:hover {
+    background-color: darken($secondary, 5%);
+
+    &::before {
+      box-shadow: 0 .1em 0.2em 0.1em lighten($primary, 45%);
+    }
+  }
+}

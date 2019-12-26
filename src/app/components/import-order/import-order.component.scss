@@ -1,0 +1,44 @@
+@import "../../../const.scss";
+
+:host {
+  width: 90%;
+  max-width: 50em;
+  display: grid;
+  grid-template-rows: min-content auto 4em;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  justify-content: space-between;
+
+  .step {
+    opacity: .3;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: $tabletWidth) {
+    font-size: calc(2.5vw);
+  }
+}
+
+#search {
+  padding: .5em 1em;
+  border: 1px solid;
+  font-size: 1em;
+  width: 100%;
+}
+
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}

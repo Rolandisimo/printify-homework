@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 @import "./const.scss";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body {
   margin: 0;
@@ -51,3 +52,6 @@ header {
     }
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

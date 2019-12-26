@@ -1,6 +1,31 @@
-<div class="container">
-  <div class="steps"></div>
-  <div class="searchbar"></div>
-  <div class="results"></div>
-  <div class="footer"></div>
+<div class="steps">
+  <h3 class="step" [ngClass]="{ active: selectedStep === 0 }">1. Find Order</h3>
+  <h3 class="step" [ngClass]="{ active: selectedStep === 1 }">2. Prepare Products</h3>
+  <h3 class="step" [ngClass]="{ active: selectedStep === 2 }">3. Confirm Order</h3>
+</div>
+
+<app-table (selectOrderId)="onOrderSelected($event)" *ngIf="!selectedOrderId"></app-table>
+<app-order-info *ngIf="selectedOrderId" [selectedOrderId]="selectedOrderId"></app-order-info>
+
+<div class="footer">
+  <app-button *ngIf="!selectedOrderId" title="Cancel" routerLink=""></app-button>
+
+  <ng-template [ngIf]="selectedOrderId">
+    <app-button title="Back" (click)="goBack()"></app-button>
+    <app-button
+      title="Next"
+      (click)="goToPrepareProducts()"
+      *ngIf="selectedStep === 0"
+    ></app-button>
+    <app-button
+      title="Next"
+      (click)="goToConfirmOrder()"
+      *ngIf="selectedStep === 1"
+    ></app-button>
+    <app-button
+      title="Confirm and Ship"
+      (click)="confirmOrder()"
+      *ngIf="selectedStep === 2"
+    ></app-button>
+  </ng-template>
 </div>

@@ -1,9 +1,18 @@
+$headerHeight: 2vh;
+$topBottomPaddingSize: 1em;
+
 header {
-  padding: 1em;
+  padding: $topBottomPaddingSize;
+  height: $headerHeight;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .bodyContainer {
-  padding: 1em;
+  padding: $topBottomPaddingSize;
   display: flex;
   justify-content: center;
+  height: calc(100vh - #{$headerHeight} - #{$topBottomPaddingSize} * 2);
+  box-sizing: border-box;
 }

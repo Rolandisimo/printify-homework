@@ -7,3 +7,11 @@ export interface Order {
   price: number;
   fulfillment: string;
 }
+
+export interface UnfinishedOrder {
+  id: string;
+  customerName: string;
+  amountOfProducts: number;
+  orderVolume: number;
+  sku: string;
+}

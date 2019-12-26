@@ -15,5 +15,4 @@ export class OrderViewComponent implements OnInit {
     this.orders = this.ordersService.getOrders();
     console.log(this.orders);
   }
-
 }
