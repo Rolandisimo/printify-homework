@@ -16,6 +16,7 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatTableModule,
+  MatPaginatorModule,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,9 +25,8 @@ import { AppComponent } from './app.component';
 import { OrderViewComponent } from './components/order-view/order-view.component';
 import { ImportOrderComponent } from './components/import-order/import-order.component';
 import { ButtonComponent } from './components/button/button.component';
-import { StepperComponent } from './components/stepper/stepper.component';
-import { TableComponent } from './components/table/table.component';
-import { OrderInfoComponent } from './components/import-order/order-info/order-info.component';
+import { ImportOrdersTableComponent } from './components/import-orders-table/import-orders-table.component';
+import { OrderInfoComponent } from './components/order-info/order-info.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,7 @@ import { OrderInfoComponent } from './components/import-order/order-info/order-i
     OrderViewComponent,
     ImportOrderComponent,
     ButtonComponent,
-    StepperComponent,
-    TableComponent,
+    ImportOrdersTableComponent,
     OrderInfoComponent,
   ],
   imports: [
@@ -59,7 +58,8 @@ import { OrderInfoComponent } from './components/import-order/order-info/order-i
     MatInputModule,
     MatSelectModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

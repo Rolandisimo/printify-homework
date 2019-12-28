@@ -8,6 +8,16 @@ export interface Order {
   fulfillment: string;
 }
 
+export interface Product {
+  name: string;
+  sku: string;
+}
+
+export interface UnfinishedOrderWithProducts {
+  products: Product[];
+  id: string;
+}
+
 export interface UnfinishedOrder {
   id: string;
   customerName: string;
