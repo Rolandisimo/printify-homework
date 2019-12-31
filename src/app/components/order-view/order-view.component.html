@@ -1,26 +1,46 @@
-<div class="container">
-  <div class="header">
-    <h1>Orders</h1>
-    <app-button title="Import Orders" routerLink="/import-orders"></app-button>
-  </div>
-  <table class="orders">
-    <tr class="ordersHeader">
-      <th>#</th>
-      <th>Customer</th>
-      <th>Created</th>
-      <th>Revenue $</th>
-      <th>Sost $</th>
-      <th>Price $</th>
-      <th>Fulfillment</th>
-    </tr>
-    <tr *ngFor="let order of orders">
-      <td> {{ order.id }} </td>
-      <td> {{ order.customer }} </td>
-      <td> {{ order.created }} </td>
-      <td> {{ order.revenue }} </td>
-      <td> {{ order.sost }} </td>
-      <td> {{ order.price }} </td>
-      <td> {{ order.fulfillment }} </td>
-    </tr>
-  </table>
+<div class="header">
+  <h1>Orders</h1>
+  <app-button title="Import Orders" routerLink="/import-orders"></app-button>
 </div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 order-table">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> # </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="customer">
+    <th mat-header-cell *matHeaderCellDef> Customer </th>
+    <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="created">
+    <th mat-header-cell *matHeaderCellDef> Created </th>
+    <td mat-cell *matCellDef="let element"> {{element.created}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="revenue">
+    <th mat-header-cell *matHeaderCellDef> Revenue </th>
+    <td mat-cell *matCellDef="let element"> {{element.revenue}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sost">
+    <th mat-header-cell *matHeaderCellDef> Sost $ </th>
+    <td mat-cell *matCellDef="let element"> {{element.sost}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price $ </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fulfillment">
+    <th mat-header-cell *matHeaderCellDef> Fulfillment </th>
+    <td mat-cell *matCellDef="let element"> {{element.fulfillment}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

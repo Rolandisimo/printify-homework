@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Order } from '../../types';
 
 export enum Step {
   FindOrder,
@@ -19,15 +20,14 @@ export class ImportOrderComponent implements OnInit {
     Step.ConfirmOrder,
   ];
   selectedStep: Step = this.steps[0];
-  selectedOrderId: string;
+  selectedOrder: Order;
 
   constructor(private location: Location) { }
 
   ngOnInit() {}
 
-  onOrderSelected(orderId: string) {
-    this.selectedOrderId = orderId;
-    console.log('ORDER ID clicked', this.selectedOrderId);
+  onOrderSelected(order: Order) {
+    this.selectedOrder = order;
   }
 
   confirmOrder() { // TODO: Redirect to home and add order to state
@@ -56,7 +56,7 @@ export class ImportOrderComponent implements OnInit {
     this.selectedStep = this.selectedStep - 1;
 
     if (this.selectedStep < 0) {
-      this.selectedOrderId = null;
+      this.selectedOrder = null;
       this.selectedStep = 0;
     }
 

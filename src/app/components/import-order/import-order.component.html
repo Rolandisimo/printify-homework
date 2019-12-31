@@ -4,13 +4,13 @@
   <h3 class="step" [ngClass]="{ active: selectedStep === 2 }">3. Confirm Order</h3>
 </div>
 
-<app-table (selectOrderId)="onOrderSelected($event)" *ngIf="!selectedOrderId"></app-table>
-<app-order-info *ngIf="selectedOrderId" [selectedOrderId]="selectedOrderId"></app-order-info>
+<app-import-orders-table (selectOrder)="onOrderSelected($event)" *ngIf="!selectedOrder"></app-import-orders-table>
+<app-order-info *ngIf="selectedOrder" [selectedOrder]="selectedOrder"></app-order-info>
 
 <div class="footer">
-  <app-button *ngIf="!selectedOrderId" title="Cancel" routerLink=""></app-button>
+  <app-button *ngIf="!selectedOrder" title="Cancel" routerLink=""></app-button>
 
-  <ng-template [ngIf]="selectedOrderId">
+  <ng-template [ngIf]="selectedOrder">
     <app-button title="Back" (click)="goBack()"></app-button>
     <app-button
       title="Next"
