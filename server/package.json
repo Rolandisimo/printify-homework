@@ -1,0 +1,38 @@
+{
+  "name": "toolkit-v2",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.16.0 <12"
+  },
+  "scripts": {
+    "lint:watch": "chokidar --verbose 'src/**/*.ts' -c 'tslint --project . -t verbose'",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node ."
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.1",
+    "@types/helmet": "0.0.44",
+    "@types/morgan": "^1.7.37",
+    "@types/node": "^12.7.5",
+    "nodemon": "^1.19.2",
+    "ts-loader": "^6.1.0",
+    "ts-node": "^8.3.0",
+    "tsconfig-paths": "^3.8.0",
+    "tslib": "^1.10.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "envalid": "^5.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.0",
+    "morgan": "^1.9.1",
+    "morgan-body": "^2.4.7"
+  }
+}

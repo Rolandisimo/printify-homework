@@ -1,0 +1,29 @@
+[
+  {
+    "created": "31/12/2019",
+    "customer": "John Smith",
+    "id": "1",
+    "price": 123,
+    "revenue": 123,
+    "sost": "13",
+    "fulfillment": "Fulfilled"
+  },
+  {
+    "created": "30/12/2019",
+    "customer": "Maria Smith",
+    "id": "2",
+    "price": 23,
+    "revenue": 123,
+    "sost": "13",
+    "fulfillment": "Quality Control"
+  },
+  {
+    "created": "29/12/2019",
+    "customer": "John Maria",
+    "id": "3",
+    "price": 5,
+    "revenue": 90,
+    "sost": "13",
+    "fulfillment": "In production"
+  }
+]

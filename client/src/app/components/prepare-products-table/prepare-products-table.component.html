@@ -1,0 +1,74 @@
+<mat-table #table [dataSource]="dataSource" class="mat-elevation-z8 order-table">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Product name </mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      class="cell-with-caret"
+    >
+      {{element.name}}
+      <span class="caret" [ngClass]="{ isFlipped: element.isOpen }"></span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="sku">
+    <mat-header-cell *matHeaderCellDef> SKU </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.sku}} </mat-cell>
+  </ng-container>
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="isSelected">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? masterToggle() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+        [aria-label]="checkboxLabel()"
+      ></mat-checkbox>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event && row.detailRow === undefined ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+        [aria-label]="checkboxLabel(row)"
+      ></mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <mat-cell *matCellDef="let row">
+      <div class="productModificationContainer">
+        <mat-form-field>
+          <input
+            [(ngModel)]="row.element.size"
+            matInput
+            placeholder="Size"
+            value="{{row.element.size}}"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            [(ngModel)]="row.element.color"
+            matInput
+            placeholder="Color"
+            value="{{row.element.color}}"
+          />
+        </mat-form-field>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+    class="row"
+    [class.expanded]="openedProduct === row"
+    *matRowDef="let row; columns: displayedColumns;"
+    (click)="toggleProductOptions(row);"
+  ></mat-row>
+  <mat-row
+    style="overflow: hidden;"
+    class="expandedRow"
+    *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow;"
+    [@detailExpand]="row.element == openedProduct ? 'expanded' : 'collapsed'"
+  ></mat-row>
+</mat-table>

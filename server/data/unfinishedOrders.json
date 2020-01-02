@@ -1,0 +1,11 @@
+[
+  { "id": "1234", "customer": "John Green", "amountOfProducts": 1.0079, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "1245", "customer": "Alex White", "amountOfProducts": 4.0026, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "3434", "customer": "John Smith", "amountOfProducts": 6.941, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "4743", "customer": "Bob Smith", "amountOfProducts": 9.0122, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "5412", "customer": "John Smith", "amountOfProducts": 10.811, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "64325", "customer": "Rob Smith", "amountOfProducts": 12.0107, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "723", "customer": "John Smith", "amountOfProducts": 14.0067, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "84232", "customer": "John Helga", "amountOfProducts": 15.9994, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"},
+  { "id": "92", "customer": "Janis Smith", "amountOfProducts": 18.9984, "orderVolume": 54.43, "sku": "SOCK_101_BIG_1"}
+]

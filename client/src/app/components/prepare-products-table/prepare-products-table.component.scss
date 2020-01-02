@@ -1,0 +1,59 @@
+@import "../../../const.scss";
+
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background-color: $secondary;
+  }
+
+  &:not(.expanded) {
+    cursor: pointer;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+  }
+
+  &.expanded {
+    border-bottom-color: transparent;
+  }
+}
+
+.caret {
+  font-size: 2.1em;
+  line-height: 0;
+  position: relative;
+  transform: rotate(45deg);
+  width: 0.3em;
+  height: 0.3em;
+  margin-left: 0.2em;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-radius: 1px;
+  display: inline-block;
+  top: -0.1em;
+  transition: .1s;
+
+  &.isFlipped {
+    transform: rotate(-135deg) translate(-4px, -5px);
+  }
+}
+
+.productModificationContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(min-content, min-content);
+  width: 100%;
+  gap: 1em;
+}

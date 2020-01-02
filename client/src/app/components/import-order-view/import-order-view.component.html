@@ -1,0 +1,54 @@
+<div class="steps">
+  <h3 class="step" [ngClass]="{ active: selectedStep === 0 }">1. Find Order</h3>
+  <h3 class="step" [ngClass]="{ active: selectedStep === 1 }">2. Prepare Products</h3>
+  <h3 class="step" [ngClass]="{ active: selectedStep === 2 }">3. Confirm Order</h3>
+</div>
+
+<ng-template #none>
+  <app-import-orders-table (selectOrder)="onOrderSelected($event)" *ngIf="!selectedOrder"></app-import-orders-table>
+</ng-template>
+<ng-template [ngIf]="selectedOrder" [ngIfElse]="none">
+  <app-order-info
+    *ngIf="selectedStep === 0"
+    [selectedOrder]="selectedOrder"
+    (prepareProducts)="onProductSelected($event)"
+    [preparedOrder]="preparedOrder"
+  ></app-order-info>
+
+  <app-prepare-products-table
+    *ngIf="selectedStep === 1"
+    [preparedOrder]="preparedOrder"
+    (confirmProducts)="onProductsConfirmed($event);"
+  ></app-prepare-products-table>
+
+  <app-confirm-products-view
+    *ngIf="selectedStep === 2"
+    [preparedOrder]="preparedOrder"
+  ></app-confirm-products-view>
+</ng-template>
+
+
+<div class="footer">
+  <app-button *ngIf="!selectedOrder" title="Cancel" routerLink=""></app-button>
+
+  <ng-template [ngIf]="selectedOrder">
+    <app-button title="Back" (click)="goBack()"></app-button>
+    <app-button
+      title="Next"
+      [isDisabled]="!preparedOrder.products.length"
+      (click)="goToPrepareProducts()"
+      *ngIf="selectedStep === 0"
+    ></app-button>
+    <app-button
+      title="Next"
+      (click)="goToConfirmOrder()"
+      [isDisabled]="!allProductsConfirmed"
+      *ngIf="selectedStep === 1"
+    ></app-button>
+    <app-button
+      title="Confirm and Ship"
+      (click)="confirmOrder()"
+      *ngIf="selectedStep === 2"
+    ></app-button>
+  </ng-template>
+</div>

@@ -1,0 +1,40 @@
+<mat-table mat-table [dataSource]="dataSource" class="mat-elevation-z8 order-table">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Product name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="sku">
+    <mat-header-cell *matHeaderCellDef> SKU </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.sku}} </mat-cell>
+  </ng-container>
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="isSelected">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? masterToggle() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+        [aria-label]="checkboxLabel()"
+      ></mat-checkbox>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+        [aria-label]="checkboxLabel(row)"
+      ></mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+    class="row"
+    *matRowDef="let row; columns: displayedColumns;"
+    (click)="selection.toggle(row)"
+  ></mat-row>
+  </mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
