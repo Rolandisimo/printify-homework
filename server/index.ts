@@ -1,4 +1,5 @@
 import Express from "express";
+import compression from "compression";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
@@ -23,6 +24,7 @@ if (env.NODE_ENV === "development") {
 }
 
 app.use(helmet());
+app.use(compression());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
