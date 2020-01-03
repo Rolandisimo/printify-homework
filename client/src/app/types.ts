@@ -24,6 +24,8 @@ export interface Product {
   size: ProductSize;
   color: string;
   price: number;
+  amount: number;
+  gender: 'M' | 'F' | 'U';
 }
 
 export type UnfinishedOrderWithProducts = Product[];

@@ -21,7 +21,7 @@
 
   <ng-container matColumnDef="orderVolume">
     <th mat-header-cell *matHeaderCellDef> Order Volume </th>
-    <td mat-cell *matCellDef="let element"> {{element.orderVolume}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.orderVolume | currency}} </td>
   </ng-container>
 
   <ng-container matColumnDef="sku">

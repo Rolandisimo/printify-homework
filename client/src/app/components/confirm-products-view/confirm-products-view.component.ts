@@ -8,10 +8,13 @@ import { PreparedOrder } from '../../types';
 })
 export class ConfirmProductsViewComponent implements OnInit {
   @Input() preparedOrder: PreparedOrder | undefined;
+  totalPrice = 0;
 
   constructor() { }
 
   ngOnInit() {
-    console.log('confirm order view', this.preparedOrder);
+    this.totalPrice = this.preparedOrder?.products.reduce((result, product) => {
+      return result += product.amount * product.price;
+    }, 0) ?? 0;
   }
 }

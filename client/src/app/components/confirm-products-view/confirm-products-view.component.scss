@@ -1,0 +1,45 @@
+@import "../../../const.scss";
+
+:host {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.orderProductsContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 40vh;
+  margin-bottom: 1em;
+  box-sizing: border-box;
+  mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
+.orderProduct {
+  margin: .5em;
+}
+
+.orderInfoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftOrderInfo {
+  text-align: left;
+}
+.rightOrderInfo {
+  text-align: right;
+}
+
+.orderGender {
+  border: 1px solid $primary;
+  padding: .2em;
+  border-radius: 100px;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  margin-right: 1em;
+
+}

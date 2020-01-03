@@ -1,47 +1,47 @@
 {
   "1234": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1", "name": "CAT_BIG", "price": 123 },
-    { "id": "2", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1", "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" },
+    { "id": "2", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 1, "gender": "M" }
   ],
   "1245": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1", "name": "CAT_BIG", "price": 123 },
-    { "id": "2", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "3", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "4", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "5", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "6", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "7", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "8", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "9", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "10", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "11", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "12", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "13", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "14", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "15", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "16", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "17", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 },
-    { "id": "18", "size": "small", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1", "name": "CAT_BIG", "price": 123, "amount": 1, "gender": "M" },
+    { "id": "2", "size": "XS", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "F" },
+    { "id": "3", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 3, "gender": "U" },
+    { "id": "4", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 4, "gender": "F" },
+    { "id": "5", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 5, "gender": "F" },
+    { "id": "6", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 6, "gender": "U" },
+    { "id": "7", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 7, "gender": "M" },
+    { "id": "8", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 1, "gender": "F" },
+    { "id": "9", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "F" },
+    { "id": "10", "size": "L", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "U" },
+    { "id": "11", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "U" },
+    { "id": "12", "size": "Xs", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "U" },
+    { "id": "13", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "M" },
+    { "id": "14", "size": "XL", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "M" },
+    { "id": "15", "size": "XXL", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "M" },
+    { "id": "16", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "M" },
+    { "id": "17", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "M" },
+    { "id": "18", "size": "S", "color": "orange", "sku": "SOCK_201_BIG_1", "name": "DOG_BIG", "price": 123, "amount": 2, "gender": "M" }
   ],
   "3434": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1", "name": "CAT_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1", "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" }
   ],
   "4743": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" }
   ],
   "5412": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" }
   ],
   "64325": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" }
   ],
   "723": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" }
   ],
   "84232": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" }
   ],
   "92": [
-    { "id": "1", "size": "medium", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123 }
+    { "id": "1", "size": "M", "color": "black", "sku": "SOCK_101_BIG_1",  "name": "CAT_BIG", "price": 123, "amount": 2, "gender": "M" }
   ]
 }

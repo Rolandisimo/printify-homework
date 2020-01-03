@@ -93,7 +93,7 @@ export class ImportOrderViewComponent extends subscribedContainerMixin() impleme
       customer: order.customer,
       sost: '124', // TODO: Find out what this is
       price: 123, // TODO: Proper calculation is outside of homework scope
-      revenue: products.reduce((res, current) => res += current.price, 0), // TODO: Arbitrary calculation
+      revenue: products.reduce((res, product) => res += (product.amount * product.price), 0), // TODO: Arbitrary calculation
     };
   }
 

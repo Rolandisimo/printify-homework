@@ -1,2 +1,20 @@
-<p>confirm-products-view works!</p>
-
+<div class="orderProductsContainer" *ngIf="preparedOrder">
+  <div class="orderProduct" *ngFor="let product of preparedOrder.products">
+    <span class="orderGender">{{ product.gender }}</span>
+    {{ product.amount }} x {{ product.name }}
+  </div>
+</div>
+<div class="orderInfoContainer">
+  <div class="leftOrderInfo">
+    <h3>Shipping</h3>
+    <div>
+      <p>Creative Lorem Ipsum</p>
+      <p>421 Bryant Street</p>
+      <p>Riga, Latvia</p>
+    </div>
+  </div>
+  <div class="rightOrderInfo">
+    <h3>Production Subtotal</h3>
+    <p>{{ totalPrice | currency }}</p>
+  </div>
+</div>
