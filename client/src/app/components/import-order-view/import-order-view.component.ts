@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { Location } from '@angular/common';
+import * as moment from 'moment';
+import { takeUntil } from 'rxjs/operators';
+
 import { Order, PreparedOrder, Product } from '../../types';
 import { OrdersService } from '../../services/orders.service';
+import { subscribedContainerMixin } from '../../mixins/subscribedContainer.mixin';
 
 export enum Step {
   FindOrder,
@@ -15,25 +18,22 @@ export enum Step {
   templateUrl: './import-order-view.component.html',
   styleUrls: ['./import-order-view.component.scss']
 })
-export class ImportOrderViewComponent implements OnInit {
+export class ImportOrderViewComponent extends subscribedContainerMixin() implements OnInit {
   steps = [
     Step.FindOrder,
     Step.PrepareProduct,
     Step.ConfirmOrder,
   ];
   selectedStep: Step = this.steps[0];
-  selectedOrder: Order;
-  preparedOrder: PreparedOrder = {
-    order: null,
-    products: [],
-  };
+  selectedOrder: Order | undefined;
+  preparedOrder: PreparedOrder = { order: null, products: [] };
+  finalOrderWithAllModifications: PreparedOrder | undefined;
 
-  finalProductWithAllModifications: PreparedOrder;
   allProductsConfirmed = false;
 
-  goToProductsDisabled = true; // TODO: Change to isGoToProductsDisabled
-
-  constructor(private location: Location, private ordersService: OrdersService) { }
+  constructor(private location: Location, private ordersService: OrdersService) {
+    super();
+  }
 
   ngOnInit() {}
 
@@ -46,16 +46,29 @@ export class ImportOrderViewComponent implements OnInit {
     this.preparedOrder.products = products;
   }
 
-  async confirmOrder() { // TODO: Redirect to home and add order to state
+  confirmOrder() {
     try {
-      await this.ordersService.postFinishedOrder(
-        this.getFormattedFinalOrder()
-      ).toPromise();
+      /**
+       * Simplified confirmation.
+       *
+       * Production should have logic for
+       * putting back in stock the products
+       * that weren't included in the final order
+       */
+      const finalOrder = this.getFormattedFinalOrder();
+      if (!finalOrder) {
+        throw new Error('Final order is not properly formatted');
+      }
 
-      this.redirectHome();
+      this.ordersService.postFinishedOrder(finalOrder)
+        .pipe(takeUntil(this.destroyed$))
+        .subscribe(() => {
+          this.redirectHome();
+        });
+
     } catch (error) {
       // TODO: This is not proper error handling. Change to custom error classes. Add visual response to error
-      console.error('Posting failed', this.finalProductWithAllModifications);
+      console.error('Posting failed', this.finalOrderWithAllModifications);
     }
   }
 
@@ -63,11 +76,15 @@ export class ImportOrderViewComponent implements OnInit {
     window.location.replace('/');
   }
 
-  getFormattedFinalOrder(): Order {
+  getFormattedFinalOrder(): Order | undefined {
     const {
       order,
       products,
-    } = this.finalProductWithAllModifications;
+    } = this.finalOrderWithAllModifications || {};
+
+    if (!order || !products?.length) {
+      return;
+    }
 
     return {
       id: order.id,
@@ -101,7 +118,7 @@ export class ImportOrderViewComponent implements OnInit {
   }
 
   onProductsConfirmed(preparedOrder: PreparedOrder) {
-    this.finalProductWithAllModifications = preparedOrder;
+    this.finalOrderWithAllModifications = preparedOrder;
 
     if (!preparedOrder.products.length) {
       this.allProductsConfirmed = false;
@@ -125,7 +142,7 @@ export class ImportOrderViewComponent implements OnInit {
     this.selectedStep = this.selectedStep - 1;
 
     if (this.selectedStep < 0) {
-      this.selectedOrder = null;
+      this.selectedOrder = undefined;
       this.selectedStep = 0;
     }
 

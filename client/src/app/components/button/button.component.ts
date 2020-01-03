@@ -6,10 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
-  @Input() title: string;
-  @Input() isDisabled: boolean;
-  @Input() routerLink: string;
-  @Input() queryParams: object;
+  @Input() title: string | undefined;
+  @Input() isDisabled: boolean | undefined;
+  @Input() routerLink: string | undefined;
+  @Input() queryParams: object | undefined;
   constructor() { }
 
   ngOnInit() {

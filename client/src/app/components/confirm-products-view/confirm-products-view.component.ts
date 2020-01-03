@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PreparedOrder } from 'src/app/types';
+import { PreparedOrder } from '../../types';
 
 @Component({
   selector: 'app-confirm-products-view',
@@ -7,7 +7,7 @@ import { PreparedOrder } from 'src/app/types';
   styleUrls: ['./confirm-products-view.component.scss']
 })
 export class ConfirmProductsViewComponent implements OnInit {
-  @Input() preparedOrder: PreparedOrder;
+  @Input() preparedOrder: PreparedOrder | undefined;
 
   constructor() { }
 

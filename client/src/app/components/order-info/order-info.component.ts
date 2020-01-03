@@ -1,24 +1,32 @@
-import { Component, OnInit, Input, ViewChild, EventEmitter, Output, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { UnfinishedOrder, Product, PreparedOrder } from '../../types';
-import { OrdersService } from '../../services/orders.service';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  EventEmitter,
+  Output,
+  OnChanges,
+} from '@angular/core';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { SelectionModel, SelectionChange } from '@angular/cdk/collections';
+import { takeUntil } from 'rxjs/operators';
+
+import { UnfinishedOrder, Product, PreparedOrder } from '../../types';
+import { OrdersService } from '../../services/orders.service';
+import { subscribedContainerMixin } from '../../mixins/subscribedContainer.mixin';
 
 @Component({
   selector: 'app-order-info',
   templateUrl: './order-info.component.html',
   styleUrls: ['./order-info.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class OrderInfoComponent implements OnInit, OnChanges {
-
-  constructor(private ordersService: OrdersService, private cdr: ChangeDetectorRef) { }
-  @Input() selectedOrder: UnfinishedOrder;
-  @Input() preparedOrder: PreparedOrder;
+export class OrderInfoComponent extends subscribedContainerMixin() implements OnInit, OnChanges {
+  @Input() selectedOrder: UnfinishedOrder | undefined;
+  @Input() preparedOrder: PreparedOrder | undefined;
   @Output() prepareProducts = new EventEmitter<Product[]>();
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | null = null;
 
-  dataSource: MatTableDataSource<Product>;
+  dataSource: MatTableDataSource<Product> | undefined;
   displayedColumns: string[] = [
     'name',
     'sku',
@@ -27,8 +35,12 @@ export class OrderInfoComponent implements OnInit, OnChanges {
 
   selection = new SelectionModel<Product>(true, this.preparedOrder?.products || []);
 
+  constructor(private ordersService: OrdersService) {
+    super();
+  }
+
   ngOnChanges() {
-    if (this.preparedOrder.products.length) {
+    if (this.preparedOrder?.products.length) {
       for (const product of this.preparedOrder.products) {
         this.selection.select(product);
       }
@@ -36,14 +48,21 @@ export class OrderInfoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.selection.changed.asObservable().subscribe((data) => {
-      this.onSelectProduct(data);
-    });
+    this.selection.changed.asObservable()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((data) => {
+        this.onSelectProduct(data);
+      });
 
-    this.ordersService.getOrderInfo(this.selectedOrder.id).subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
+    if (this.selectedOrder) {
+      this.ordersService.getOrderInfo(this.selectedOrder.id)
+        .pipe(takeUntil(this.destroyed$))
+        .subscribe((data) => {
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
+        });
+    }
+
   }
 
   isAllSelected() {
