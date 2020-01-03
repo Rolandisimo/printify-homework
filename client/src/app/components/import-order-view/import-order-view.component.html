@@ -4,6 +4,11 @@
   <h3 class="step" [ngClass]="{ active: selectedStep === 2 }">3. Confirm Order</h3>
 </div>
 
+<div class="breadcrumbs" *ngIf="selectedOrder && selectedStep !== 2">
+  <a class="crumb" href="#" routerLink="">My Orders</a> |
+  <div class="crumb" (click)="resetSelectedProduct()">Order #{{ selectedOrder.id }}</div>
+</div>
+
 <ng-template #none>
   <app-import-orders-table (selectOrder)="onOrderSelected($event)" *ngIf="!selectedOrder"></app-import-orders-table>
 </ng-template>
@@ -26,7 +31,6 @@
     [preparedOrder]="finalOrderWithAllModifications"
   ></app-confirm-products-view>
 </ng-template>
-
 
 <div class="footer">
   <app-button *ngIf="!selectedOrder" title="Cancel" routerLink=""></app-button>

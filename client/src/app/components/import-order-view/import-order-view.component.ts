@@ -31,7 +31,7 @@ export class ImportOrderViewComponent extends subscribedContainerMixin() impleme
 
   allProductsConfirmed = false;
 
-  constructor(private location: Location, private ordersService: OrdersService) {
+  constructor(private ordersService: OrdersService) {
     super();
   }
 
@@ -44,6 +44,10 @@ export class ImportOrderViewComponent extends subscribedContainerMixin() impleme
 
   onProductSelected(products: Product[]) {
     this.preparedOrder.products = products;
+  }
+
+  resetSelectedProduct() {
+    this.selectedStep = Step.FindOrder;
   }
 
   confirmOrder() {
@@ -130,8 +134,6 @@ export class ImportOrderViewComponent extends subscribedContainerMixin() impleme
 
   goToNextStep() {
     this.selectedStep = ++this.selectedStep;
-    // this.location.replaceState(this.location.path(), `step=${this.selectedStep}`);
-    // this.location.forward();
   }
 
   isNotLastStep() {
@@ -145,7 +147,5 @@ export class ImportOrderViewComponent extends subscribedContainerMixin() impleme
       this.selectedOrder = undefined;
       this.selectedStep = 0;
     }
-
-    // this.location.back();
   }
 }

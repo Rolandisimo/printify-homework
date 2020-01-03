@@ -4,7 +4,7 @@
   width: 90%;
   max-width: 50em;
   display: grid;
-  grid-template-rows: min-content auto 4em;
+  grid-template-rows: min-content min-content auto 4em;
   gap: 2em;
 }
 .container {
@@ -41,4 +41,20 @@
 .footer {
   display: flex;
   justify-content: flex-end;
+}
+
+.breadcrumbs {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 0.5em;
+
+  .crumb {
+    color: $accentColor;
+    line-height: 1.5;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
