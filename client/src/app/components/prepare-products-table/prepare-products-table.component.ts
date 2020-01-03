@@ -33,6 +33,7 @@ export class PrepareProductsTableComponent extends subscribedContainerMixin() im
   @Input() preparedOrder: PreparedOrder | undefined;
   @Output() confirmProducts = new EventEmitter<PreparedOrder>();
 
+  availableGenders = ['M', 'F', 'U']; // TODO: Should come from the BE based on product availability.
   dataSource: MatTableDataSource<ProductAndDetailsRows> | undefined;
   displayedColumns: string[] = [
     'name',

@@ -54,6 +54,24 @@
             value="{{row.element.color}}"
           />
         </mat-form-field>
+        <mat-form-field>
+          <input
+            [(ngModel)]="row.element.amount"
+            matInput
+            type="number"
+            min="1"
+            placeholder="Amount"
+            value="{{row.element.amount}}"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <mat-select [(value)]="row.element.gender">
+            <mat-option *ngFor="let gender of availableGenders" [value]="gender">
+              {{gender}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </mat-cell>
   </ng-container>
